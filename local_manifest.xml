@@ -1,0 +1,21 @@
+repo init -u https://github.com/PixelOS-AOSP/manifest.git -b fourteen --git-lfs
+/opt/crave/resync.sh &&
+rm -rf */xiaomi
+git clone https://github.com/EpsilonAN/device_xiaomi_marble device/xiaomi/marble
+git clone https://github.com/EpsilonAN/device_xiaomi_sm8450-common device/xiaomi/sm8450-common
+git clone https://github.com/EpsilonAN/vendor_xiaomi_sm8450-common vendor/xiaomi/sm8450-common
+git clone https://github.com/Chaitanyakm/vendor_xiaomi_marble vendor/xiaomi/marble
+git clone https://github.com/Evolution-X-Devices/hardware_xiaomi hardware/xiaomi
+rm -rf hardware/xiaomi/megvii
+git clone https://github.com/Chaitanyakm/device_xiaomi_miuicamera-marble device/xiaomi/miuicamera-marble
+git clone https://gitlab.com/Chaitanyakm/vendor_xiaomi_miuicamera-marble vendor/xiaomi/miuicamera-marble
+git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450 kernel/xiaomi/sm8450
+git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450-devicetrees kernel/xiaomi/sm8450-devicetrees
+git clone https://github.com/cupid-development/android_kernel_xiaomi_sm8450-modules kernel/xiaomi/sm8450-modules
+git clone https://github.com/AOSPA/android_device_xiaomi_sepolicy device/xiaomi/sepolicy
+git clone https://github.com/xenxynon/certs vendor/aosp/signing/keys
+export BUILD_USERNAME=EPSILON &&
+export BUILD_HOSTNAME=crave &&
+source build/envsetup.sh &&
+lunch aosp_marble-ap2a-user
+mka bacon
